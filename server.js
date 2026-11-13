@@ -3,6 +3,13 @@ const os = require('node:os')
 
 const app = express()
 
+app.get('/health', (req, res) => {
+    res.status(200).json({
+        status: "Healthy!",
+        time_stamp: new Date().toISOString()
+    })
+})
+
 app.get('/system', (req, res) => {
     res.json({ 
         os: os.platform(),
